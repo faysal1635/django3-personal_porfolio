@@ -1,0 +1,29 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <h1>Faysal's portfolio</h1>
+
+    <a href="{% url 'blog:all_blogs' %}">Blogs</a>
+    <br>
+
+    {% load static %}
+
+
+    <a href="{% static 'portfoli\me-before-you-jojo-moyes.pdf'%}">Book</a><br>
+
+    <img src="{% static 'portfoli\faysa.jpg' %}" height="500" width="500">
+
+    {% for projects in projects %}
+
+    <h2>{{ projects.title }}</h2>
+    <p>{{ projects.discription }}</p>
+    <img src="{{ projects.image.url }}" alt="" height="500" width="750">
+    {% if projects.url %}
+    <br><a href="{{ projects.url }}">Link</a>
+    {% endif %}
+
+
+    {% endfor %}
+
+
+{% endblock %}
